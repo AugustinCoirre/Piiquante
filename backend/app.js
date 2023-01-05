@@ -1,11 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Sauce = require('./models/sauce');
-const User = require('./models/user');
 require('dotenv').config();
 
-const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const sauceRoutes = require('./routes/sauce');
 
 const cors = require('cors');
 
@@ -26,8 +24,7 @@ app.use((req, res, next) => {
    next();
  });
 
-app.use('/api/auth', authRoutes);
-
-app.use('api/auth', userRoutes);
+app.use('/api/auth', userRoutes);
+app.use('/api/sauces', sauceRoutes);
 
 module.exports = app;
