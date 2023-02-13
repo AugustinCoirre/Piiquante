@@ -6,11 +6,10 @@ const router = express.Router();
 const sauceCtrl = require('../controllers/sauce');
 
 router.post('/', auth, multer, sauceCtrl.newSauce);
-router.get('/', auth, multer, sauceCtrl.findSauce);
-router.get('/', auth, multer, sauceCtrl.findOneSauce);
-router.put('/', auth, multer, sauceCtrl.updateSauce);
-router.delete('/', auth, multer, sauceCtrl.deleteSauce);
-
-
+router.get('/', auth, sauceCtrl.findSauce);
+router.get('/:id', auth, sauceCtrl.findOneSauce);
+router.put('/:id', auth, multer, sauceCtrl.updateSauce);
+router.delete('/:id', auth, sauceCtrl.deleteSauce);
+router.post('/:id/like', auth, sauceCtrl.likeSauce);
 
 module.exports = router;
